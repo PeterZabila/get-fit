@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { SelectedPage } from '@/shared/types';
 import Logo from '@/assets/Logo.png';
