@@ -25,7 +25,11 @@ const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
                 {/* MAIN HEADER */}
                 <div className="z-10 mt-32 md:basis-3/5">
                     {/* HEADING */}
-                    <div className="md:-mt-20">
+                    <motion.div 
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    className="md:-mt-20">
                     <div className="relative">
                 <div 
                     className="before:absolute before:-top-20  before:-left-20 before:z-[-1]            md:before:content-evolvetext">
@@ -33,7 +37,7 @@ const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
                 </div>
                 </div>
                         <p className="mt-8 text-sm">Super innovative competetice fitness gym training program for beginners and professional athletes worldwide for everybody in the club and so on and so on  welcome guys and girls also</p>
-                    </div>
+                    </motion.div>
                     {/* ACTIONS */}
                     <div className="mt-8 flex items-center gap-8">
                         <ActionButton setSelectedPage={setSelectedPage}>
