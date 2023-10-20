@@ -5,6 +5,9 @@ import Logo from '@/assets/Logo.png';
 import Link from "./Link";
 import ActionButton from '@/shared/ActionButton';
 import useMediaQuery from '@/hooks/useMediaQuery';
+import { auth, provider, app } from "@/firebase";
+import { signInWithPopup } from "firebase/auth";
+import { signInWithGoogle } from "@/firebase";
 
 type Props = {
     selectedPage: SelectedPage;
@@ -14,9 +17,16 @@ type Props = {
 
 export const Navbar = ({ selectedPage, setSelectedPage, isTopOfPage }: Props) => {
     const flexBetween = "flex items-center justify-between";
-    const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow"
-    const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
-    const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false)
+    const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow";
+    const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+    const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
+    const [user, setUser] = useState<string | null>(localStorage.getItem("name"));  
+
+    const handleLogout = () => {
+        localStorage.clear();
+        setUser(null)
+    }
+
     return (
         <nav>
             <div 
@@ -48,7 +58,11 @@ export const Navbar = ({ selectedPage, setSelectedPage, isTopOfPage }: Props) =>
                                 />
                             </div>
                             <div className={`${flexBetween} gap-8`}>
-                                <p>Sign in</p>
+                                {user !== null ? (<><h2>Hello <span className="font-bold">{user}</span></h2><button type="button" onClick={handleLogout} className="bg-primary-300 rounded-md p-2">Logout</button></>) : (<button type="button" onClick={signInWithGoogle}>
+                                    Google SignIn
+                                </button>)}  
+                                
+                                
                                 <ActionButton 
                                     setSelectedPage={setSelectedPage}
                                 >Become one of us</ActionButton>

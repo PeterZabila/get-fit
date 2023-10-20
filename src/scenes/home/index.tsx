@@ -73,7 +73,7 @@ const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
                     <img src={HomePageGraphic} alt="home-pageGraphic" />
                 </div>
             </motion.div>
-            {/* SPONSORS */}
+            {/* SPONSORS
             {isAboveMediumScreens &&
                 (
                     <div className="h-[150px] w-full bg-primary-100 py-10">
@@ -86,7 +86,7 @@ const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)")
                         </div>
                     </div>
                 )
-            }
+            } */}
             
         </section>
     )
